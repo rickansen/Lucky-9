@@ -43,9 +43,7 @@ function startGame () {
       }
 
       playersPic = playersCard.map(x=> x.map(a => a.image))
-      
       playersName = playersCard.map(x=> x.map(a => `${a.value} of \n${a.suit}`))
-
       playersValue = playersCard.map(x=> x.map(a => Number(a.value))).map(x => [x.slice(0,2).reduce((a,b) => a+b,0) % 10, x[2]])
 
       for (let i = 0; i < 3; i++) {
@@ -54,24 +52,17 @@ function startGame () {
       }
 
       userResult.innerText = `The value of your deck is currently ${playersValue[0][0]}`
-
       userVal = playersValue[0][0]
-
-      console.log(playersCard)
-      console.log(playersPic)
-      console.log(playersName)
-      console.log(playersValue)
 
       return userVal
 
- 
     })
+
     .catch(err => {
         console.log(`error ${err}`)
     });
 
 }
-
 
 // ======================================================
 //                      DRAW FUNCTION
@@ -98,8 +89,4 @@ function getResults () {
   hide3.classList.remove('hide3')
   let botVal = playersValue.slice(1)
   botVal = botVal.map(x => x[0] >=5 ? x[0] : (x[0] + x[1]) % 10)
-
-  console.log(botVal)
-  console.log(userVal)
-  
 }
